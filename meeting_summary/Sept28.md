@@ -27,7 +27,7 @@
 ### Github Invitation:
 I have sent out the github invitations, if you have not put your id in the google sheet please do that asap. If you put your id but did not get an invitation please contact me.
 ### Resources (for web):
-For a general overview, please watch these 100 seconds videos (they are all very short [you can tell from their names] and will give you an overview of what is happening in the web development world):
+For a general overview, please watch these 100 seconds videos (they are all very short [you can tell from their] and will give you an overview of what is happening in the web development world):
 - 1. [HTML in 100 seconds](https://www.youtube.com/watch?v=ok-plXXHlWw)
 - 2. [CSS in 100 seconds](https://www.youtube.com/watch?v=OEV8gMkCHXQ)
 - 3. [Javascript in 100 seconds](https://www.youtube.com/watch?v=DHjqpvDnNGE)
