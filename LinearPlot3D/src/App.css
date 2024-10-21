@@ -11,6 +11,7 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
@@ -39,4 +40,9 @@
 
 .read-the-docs {
   color: #888;
+}
+
+#hello {
+  font-size: 2em;
+  margin: 1em 0;
 }
