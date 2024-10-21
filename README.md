@@ -10,12 +10,12 @@ LinearPlot3D will be a web application that displays animation to help students 
 
 - [When2Meet](https://www.when2meet.com/?26617191-R95VN): Please fill out the When2Meet to schedule a meeting time: [link](https://www.when2meet.com/?26617191-R95VN)
 
-- [Discord](https://discord.gg/2urgCZG3): If you have no, please join the Discord channel to communicate with the team: [link](https://discord.gg/2urgCZG3). Regular updates will be posted on LinearPlot3D subchannel. If you are not able to see the subchannel, please let me know through [email](mailto:txe4sf@virginia.edu) or ping me on [discord](https://discord.gg/2urgCZG3)
+- [Discord](https://discord.gg/2urgCZG3): If you have not, please join the Discord channel to communicate with the team: [link](https://discord.gg/2urgCZG3). Regular updates will be posted on LinearPlot3D subchannel. If you are not able to see the subchannel, please let me know through [email](mailto:txe4sf@virginia.edu) or ping me on [discord](https://discord.gg/2urgCZG3)
 
 - [Github Id](https://docs.google.com/spreadsheets/d/1N01t0VxGgPnkvdzV705SZzFz5FtR2-6shu2m27PyfbA/edit?usp=sharing): Please enter your github identifiers (username or email) in this sheet so I can add you to the repository
 
 ### Things to install*
-- [Visual Studio Code](https://code.visualstudio.com/): This is the code editor that I use. It is very lightweight and has a lot of extensions that can help you with your coding. Also extremely popular among web developers.
+- [Visual Studio Code](https://code.visualstudio.com/): This is the code editor I use. It is very lightweight and has a lot of extensions that can help you with your coding. Also extremely popular among web developers.
 - [NodeJs](https://nodejs.org/en): This is a javascript runtime that we will be using to run our react project.
 - [Git](https://git-scm.com/downloads): This is the official git download page. Git is a version control system that we will be using to manage our project.
 
