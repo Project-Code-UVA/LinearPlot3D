@@ -2,7 +2,7 @@
 
 ## Welcome to LinearPlot3D!
 
-- **There's a large list of resources below, I strongly encourage everything to take a look at the links and sections with * after it**
+- **There's a large list of resources below, I strongly encourage everyone to take a look at the links and sections with * after it**
 
 LinearPlot3D will be a web application that displays animation to help students understand the concept of linear algebra in 3D space and professors to teach the concept of linear algebra in 3D space.
 
@@ -36,7 +36,7 @@ LinearPlot3D will be a web application that displays animation to help students 
 - [A More Advanced React Tutorial](https://www.youtube.com/watch?v=LDB4uaJ87e0): this is a web app project with nice styling using react
 
 ### ThreeJs
-- I have barely touched ThreeJs before but I am aware that this is the goto library for 3D rendering in the web. We will all be researching on 3D rendering on the web along our way through the project
+- I have barely touched ThreeJs before but I am aware that this is the goto library for 3D rendering on the web. We will all be researching 3D rendering on the web along our way through the project
 - [Official ThreeJs](https://threejs.org/): This is the official three js website. It is a bit hard to navigate but it has a lot of examples.
 - [React Three Fiber](https://r3f.docs.pmnd.rs/getting-started/introduction): This is a react wrapper for three js on react
 - [React Three Fiber Github](https://github.com/pmndrs/react-three-fiber): The official github page for react three fiber contains a good amount of docs and tutorials
@@ -51,7 +51,7 @@ LinearPlot3D will be a web application that displays animation to help students 
 - [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web): This is the official documentation for web development.
 
 ### Git & Github
-- I am by no mean an expert in git. I will learn along the way with you guys.
+- I am by no means an expert in git. I will learn along the way with you guys.
 - [Git and GitHub Tutorial for Beginners](https://www.youtube.com/watch?v=tRZGeaHPoaw): This is a good tutorial to learn git and github. I encourage everyone to create an example repository to practice git commands.
 - [W3Schools](https://www.w3schools.com/git): I am not aware that W3Schools has a git tutorial, but WSchools typically have good systematic tutorials.
 
