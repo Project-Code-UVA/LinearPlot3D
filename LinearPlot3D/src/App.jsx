@@ -1,70 +1,139 @@
-import { useEffect, useRef, useState } from "react";
-// import { createRef } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { useRef, useState } from "react";
 import "./App.css";
+import { Canvas } from "@react-three/fiber";
+import { Line, Text } from "@react-three/drei";
+import * as THREE from "three";
+
+const origin = new THREE.Vector3(0, 0, 0);
 
 function App() {
-  // whenever setCount is called with a new value, the component will re-render
-  const [count, setCount] = useState([]);
+  const coordX = new THREE.Vector3(5, 0, 0);
+  const coordY = new THREE.Vector3(0, 5, 0);
 
-  useEffect(() => {
-    console.log("count is", count);
-  });
+  const [line1, setLine1] = useState([origin, origin]);
+
+  const [line2, setLine2] = useState([origin, origin]);
+
+  const [line3, setLine3] = useState([origin, origin]);
 
   const inputRef1 = useRef(null);
   const inputRef2 = useRef(null);
-
-  const [input1, setInput1] = useState(0);
-  const [input2, setInput2] = useState(0);
+  const inputRef3 = useRef(null);
+  const inputRef4 = useRef(null);
+  const inputRef5 = useRef(null);
+  const inputRef6 = useRef(null);
 
   const handleInput1Change = () => {
-    setInput1(Number(inputRef1.current.value));
+    setLine1([
+      line1[0],
+      new THREE.Vector3(
+        Number(inputRef1.current.value),
+        line1[1].y,
+        line1[1].z
+      ),
+    ]);
   };
 
   const handleInput2Change = () => {
-    setInput2(Number(inputRef2.current.value));
+    setLine1([
+      line1[0],
+      new THREE.Vector3(
+        line1[1].x,
+        Number(inputRef2.current.value),
+        line1[1].z
+      ),
+    ]);
   };
-  
-  // div tag is normally building blocks that doesn't display anything by itself
-  // but it can be styled with css
 
-  // a tag is a hyperlink that can be styled with css
-  // href is the hyperlink reference
+  const handleInput3Change = () => {
+    setLine2([
+      line2[0],
+      new THREE.Vector3(
+        Number(inputRef3.current.value),
+        line2[1].y,
+        line2[1].z
+      ),
+    ]);
+  };
 
-  // h1 tag is a header tag (title) that can be styled with css
+  const handleInput4Change = () => {
+    setLine2([
+      line2[0],
+      new THREE.Vector3(
+        line2[1].x,
+        Number(inputRef4.current.value),
+        line2[1].z
+      ),
+    ]);
+  };
 
-  // .{className} styles tags with the class name
-  // #{idName} styles tags with the id name
+  const handleInput5Change = () => {
+    setLine3([
+      line3[0],
+      new THREE.Vector3(
+        Number(inputRef5.current.value),
+        line3[1].y,
+        line3[1].z
+      ),
+    ]);
+  };
 
-  // see if you can create two inputs and get the sum of the two inputs to display
-
-  // to display it, run "npm run dev" in the terminal
-  // and go to http://localhost:5173/
+  const handleInput6Change = () => {
+    setLine3([
+      line3[0],
+      new THREE.Vector3(
+        line3[1].x,
+        Number(inputRef6.current.value),
+        line3[1].z
+      ),
+    ]);
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="app">
+        <div className="side">
+          <div className="input-box">
+            <div>x1</div>
+            <input ref={inputRef1} onChange={handleInput1Change}></input>
+          </div>
+          <div className="input-box">
+            <div>y1</div>
+            <input ref={inputRef2} onChange={handleInput2Change}></input>
+          </div>
+          <div className="input-box">
+            <div>x2</div>
+            <input ref={inputRef3} onChange={handleInput3Change}></input>
+          </div>
+          <div className="input-box">
+            <div>y2</div>
+            <input ref={inputRef4} onChange={handleInput4Change}></input>
+          </div>
+          <div className="input-box">
+            <div>x3</div>
+            <input ref={inputRef5} onChange={handleInput5Change}></input>
+          </div>
+          <div className="input-box">
+            <div>y3</div>
+            <input ref={inputRef6} onChange={handleInput6Change}></input>
+          </div>
+        </div>
+        <div className="test">
+          <Canvas>
+            <Text
+              position={[0, 0, 0]} // Position in 3D space
+              color="black" // Color of the text
+            >
+              Hello, React Three.js!
+            </Text>
+            <Line points={[origin, coordX]} color="black"></Line>
+            <Line points={[origin, coordY]} color="black"></Line>
+            <Line points={line1} color="blue" lineWidth={4} />
+            <Line points={line2} color="red" lineWidth={4} />
+            <Line points={line3} color="green" lineWidth={4} />
+          </Canvas>
+        </div>
       </div>
-      <input ref={inputRef1} onChange={handleInput1Change} />
-      <input ref={inputRef2} onChange={handleInput2Change} />
-      <p>Sum is {input1 + input2}</p>
-      <h1 id="hello">Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => [...count, 1])}>
-          count is {count}
-        </button>
-        <p>Edit src/App.jsx and save to test HMR</p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   );
 }

@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+/* div {
+  border: 1px solid black;
+} */
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -45,4 +49,24 @@
 #hello {
   font-size: 2em;
   margin: 1em 0;
+}
+
+.test {
+  /* border-style: solid; */
+  /* border-width: 1px; */
+  width: 200px;
+  height: 200px;
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+}
+
+.app {
+  display: flex;
+}
+
+.input-box {
+  display: flex;
 }
