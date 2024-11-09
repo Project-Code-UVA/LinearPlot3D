@@ -1,4 +1,4 @@
-# Meeting Summary + Post Meeting - October 5, 2024
+# Meeting Summary + Post Meeting - Nov 9, 2024
 
 ## Meeting Summary
 1. added mechanism to add / delete multiple vectors

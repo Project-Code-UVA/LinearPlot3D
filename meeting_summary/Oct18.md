@@ -1,4 +1,4 @@
-# Meeting Summary + Post Meeting - October , 2024
+# Meeting Summary + Post Meeting - October 18, 2024
 
 ## Meeting Summary
 1. Went over more basic react concepts

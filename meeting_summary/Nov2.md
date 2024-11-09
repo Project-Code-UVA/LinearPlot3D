@@ -1,4 +1,4 @@
-# Meeting Summary + Post Meeting - October 5, 2024
+# Meeting Summary + Post Meeting - Nov 2, 2024
 
 ## Meeting Summary
 1. Started to work on the actual application.
