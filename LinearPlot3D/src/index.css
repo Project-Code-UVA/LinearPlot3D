@@ -68,8 +68,15 @@ button:focus-visible {
   }
 }
 
-.vecter-button {
+.vector-button {
   cursor: pointer;
+}
+
+.input-background {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 10px;
+  display: inline-block;
 }
 
 .scroll-div{
