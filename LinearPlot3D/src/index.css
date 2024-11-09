@@ -67,3 +67,13 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.vecter-button {
+  cursor: pointer;
+}
+
+.scroll-div{
+  width: 400px;
+  height: 400px;
+  overflow-y: scroll;
+}
