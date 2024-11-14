@@ -24,6 +24,15 @@ function App() {
     setVectors(vectors.slice(0, vectors.length - 1));
   };
 
+  const handleDeleteAllVectors = () => {
+    setVectors([])
+  };
+
+  const [colors, setColors] = useState("purple");
+  const handleColorChange = (e) => {
+    setColors(e.target.value)
+  };
+
   const coordX = new THREE.Vector3(5, 0, 0);
   const coordY = new THREE.Vector3(0, 5, 0);
 
@@ -36,8 +45,10 @@ function App() {
               <div key={index} className="input-box">
                 <div>x</div>
                 <input
+                  placeholder="x-value"
                   onChange={(e) => {
                     setVectors([
+
                       ...vectors.slice(0, index),
                       new Vec(
                         Number(e.target.value),
@@ -50,8 +61,10 @@ function App() {
                 ></input>
                 <div>y</div>
                 <input
+                  placeholder="y-value"
                   onChange={(e) => {
                     setVectors([
+
                       ...vectors.slice(0, index),
                       new Vec(
                         vectors[index].x,
@@ -62,6 +75,7 @@ function App() {
                     ]);
                   }}
                 ></input>
+                <div>color</div>
               </div>
             ))}
           </div>
@@ -71,8 +85,17 @@ function App() {
           <button className="vector-button" onClick={handleDeleteVector}>
             Delete a vector
           </button>
+          <button className="vector-button" onClick={(handleDeleteAllVectors)}>
+            Delete all vectors
+          </button>
+          <input
+            placeholder="color"
+            onChange={handleColorChange}
+          ></input>
         </div>
+
         <div className="canvas-bound">
+
           <Canvas>
             <Line points={[origin, coordX]} color="black"></Line>
             <Line points={[origin, coordY]} color="black"></Line>
@@ -83,7 +106,7 @@ function App() {
                   origin,
                   new THREE.Vector3(vector.x, vector.y, vector.z),
                 ]}
-                color="purple"
+                color={colors}
                 lineWidth={4}
               />
             ))}
