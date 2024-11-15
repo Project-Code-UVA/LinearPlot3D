@@ -72,12 +72,11 @@ button:focus-visible {
   cursor: pointer;
 }
 
-.scroll-div{
+.vector-input{
   background-color: #f0f0f0;
   border-radius: 10px;
   padding: 10px;
   display: inline-block;
-  
   width: 400px;
   height: 400px;
   overflow-y: scroll;

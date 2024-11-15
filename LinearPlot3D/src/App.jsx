@@ -31,7 +31,7 @@ function App() {
     <>
       <div className="app">
         <div className="side">
-          <div className="scroll-div">
+          <div className="vector-input">
             {vectors.map((vector, index) => (
               <div key={index} className="input-box">
                 <div>x</div>
