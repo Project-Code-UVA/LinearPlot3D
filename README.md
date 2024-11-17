@@ -6,6 +6,17 @@
 
 LinearPlot3D will be a web application that displays animation to help students understand the concept of linear algebra in 3D space and professors to teach the concept of linear algebra in 3D space.
 
+## How to contribute:
+To contribute to the project, you will have to do the following:
+- Clone the repository or pull the latest changes
+- If you have not, run `npm install` to install all the dependencies
+- Run `npm run dev` to start the development server and implement your changes
+- Do `git checkout -b your_branch_name` to create a new branch
+- Do `git add .` to add all the changes
+- Do `git commit -m "your commit message"` to commit the changes
+- Do `git push origin your_branch_name` to push the changes to the repository
+- Notify me to review the changes and merge the branch to the main branch
+
 ## To-dos*
 
 - [When2Meet](https://www.when2meet.com/?26617191-R95VN): Please fill out the When2Meet to schedule a meeting time: [link](https://www.when2meet.com/?26617191-R95VN)
