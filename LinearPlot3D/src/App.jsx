@@ -16,6 +16,8 @@ class Vec {
 
 function App() {
   const [vectors, setVectors] = useState([]);
+  const [matrix, setMatrix] = useState([0, 0, 0, 0]);
+
   const handleAddVector = () => {
     setVectors([...vectors, new Vec(0, 0, 0)]);
   };
@@ -25,12 +27,44 @@ function App() {
   };
 
   const handleDeleteAllVectors = () => {
-    setVectors([])
+    setVectors([]);
   };
 
   const [colors, setColors] = useState("purple");
   const handleColorChange = (e) => {
-    setColors(e.target.value)
+    setColors(e.target.value);
+  };
+
+  const handleMatrixa11Change = (e) => {
+    setMatrix([
+      ...matrix.slice(0, 0),
+      Number(e.target.value),
+      ...matrix.slice(1),
+    ]);
+  };
+
+  const handleMatrixa12Change = (e) => {
+    setMatrix([
+      ...matrix.slice(0, 1),
+      Number(e.target.value),
+      ...matrix.slice(2),
+    ]);
+  };
+
+  const handleMatrixa21Change = (e) => {
+    setMatrix([
+      ...matrix.slice(0, 2),
+      Number(e.target.value),
+      ...matrix.slice(3),
+    ]);
+  };
+
+  const handleMatrixa22Change = (e) => {
+    setMatrix([
+      ...matrix.slice(0, 3),
+      Number(e.target.value),
+      ...matrix.slice(4),
+    ]);
   };
 
   const coordX = new THREE.Vector3(5, 0, 0);
@@ -40,6 +74,17 @@ function App() {
     <>
       <div className="app">
         <div className="side">
+          <div className="matrix-input">
+            <div className="matrix-title">Matrix</div>
+            <div className="matrix-row">
+              <input placeholder="a11" onChange={handleMatrixa11Change}></input>
+              <input placeholder="a12" onChange={handleMatrixa12Change}></input>
+            </div>
+            <div className="matrix-row">
+              <input placeholder="a21" onChange={handleMatrixa21Change}></input>
+              <input placeholder="a22" onChange={handleMatrixa22Change}></input>
+            </div>
+          </div>
           <div className="vector-input">
             {vectors.map((vector, index) => (
               <div key={index} className="input-box">
@@ -48,7 +93,6 @@ function App() {
                   placeholder="x-value"
                   onChange={(e) => {
                     setVectors([
-
                       ...vectors.slice(0, index),
                       new Vec(
                         Number(e.target.value),
@@ -64,7 +108,6 @@ function App() {
                   placeholder="y-value"
                   onChange={(e) => {
                     setVectors([
-
                       ...vectors.slice(0, index),
                       new Vec(
                         vectors[index].x,
@@ -85,17 +128,19 @@ function App() {
           <button className="vector-button" onClick={handleDeleteVector}>
             Delete a vector
           </button>
-          <button className="vector-button" onClick={(handleDeleteAllVectors)}>
+          <button className="vector-button" onClick={handleDeleteAllVectors}>
             Delete all vectors
           </button>
-          <input
-            placeholder="color"
-            onChange={handleColorChange}
-          ></input>
+          <input placeholder="color" onChange={handleColorChange}></input>
         </div>
-
+        <button
+          onClick={() => {
+            console.log(matrix);
+          }}
+        >
+          Click Me
+        </button>
         <div className="canvas-bound">
-
           <Canvas>
             <Line points={[origin, coordX]} color="black"></Line>
             <Line points={[origin, coordY]} color="black"></Line>
