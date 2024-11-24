@@ -1,4 +1,4 @@
-# Meeting Summary + Post Meeting - Nov 16, 2024
+# Meeting Summary + Post Meeting - Nov 23, 2024
 
 ## Meeting Summary
 1. attempted to implement applying the transformation matrix
