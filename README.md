@@ -19,7 +19,7 @@ To contribute to the project, you will have to do the following:
 
 ## To-dos*
 
-- [When2Meet](https://www.when2meet.com/?26617191-R95VN): Please fill out the When2Meet to schedule a meeting time: [link](https://www.when2meet.com/?26617191-R95VN)
+- [When2Meet](https://www.when2meet.com/?28397295-AqSc1): Please fill out the When2Meet to schedule a meeting time: [link](https://www.when2meet.com/?28397295-AqSc1)
 
 - [Discord](https://discord.gg/2urgCZG3): If you have not, please join the Discord channel to communicate with the team: [link](https://discord.gg/2urgCZG3). Regular updates will be posted on LinearPlot3D subchannel. If you are not able to see the subchannel, please let me know through [email](mailto:txe4sf@virginia.edu) or ping me on [discord](https://discord.gg/2urgCZG3)
 
