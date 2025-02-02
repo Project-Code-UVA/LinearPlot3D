@@ -1,9 +1,11 @@
-import { useState } from "react";
 import "./App.css";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Line } from "@react-three/drei";
 import * as THREE from "three";
 import MyCanvas from "./MyCanvas";
+import { useState } from "react";
+import { Canvas } from "@react-three/fiber";
+import { TrackballControls, Text } from '@react-three/drei'
+import ThreeDTextScene from "./playground";
+
 
 const origin = new THREE.Vector3(0, 0, 0);
 
@@ -18,7 +20,7 @@ function App() {
   };
 
   const handleAddVector = () => {
-    setVectors([...vectors, {x : 0, y : 0, z :0}]);
+    setVectors([...vectors, { x: 0, y: 0, z: 0 }]);
   };
 
   const handleDeleteVector = () => {
@@ -68,6 +70,9 @@ function App() {
   const coordX = new THREE.Vector3(5, 0, 0);
   const coordY = new THREE.Vector3(0, 5, 0);
   const coordZ = new THREE.Vector3(0, 0, 5);
+  const coordXRev = new THREE.Vector3(-5, 0, 0);
+  const coordYRev = new THREE.Vector3(0, -5, 0);
+  const coordZRev = new THREE.Vector3(0, 0, -5);
 
   return (
     <>
@@ -99,9 +104,10 @@ function App() {
                   onChange={(e) => {
                     let newVectors = [
                       ...vectors.slice(0, index),
-                      { x : e.target.value,
-                        y : vectors[index].y,
-                        z : vectors[index].z
+                      {
+                        x: e.target.value,
+                        y: vectors[index].y,
+                        z: vectors[index].z,
                       },
                       ...vectors.slice(index + 1),
                     ];
@@ -114,9 +120,10 @@ function App() {
                   onChange={(e) => {
                     let newVectors = [
                       ...vectors.slice(0, index),
-                      { x : vectors[index].x,
-                        y : e.target.value,
-                        z : vectors[index].z
+                      {
+                        x: vectors[index].x,
+                        y: e.target.value,
+                        z: vectors[index].z,
                       },
                       ...vectors.slice(index + 1),
                     ];
@@ -137,50 +144,29 @@ function App() {
             Delete all vectors
           </button>
           <input placeholder="color" onChange={handleColorChange}></input>
+          <button
+            onClick={() => {
+              console.log(vectors);
+              console.log(matrix);
+            }}
+          >
+            Debug Button
+          </button>
         </div>
-        <button
-          onClick={() => {
-            console.log(matrix);
-          }}
-        >
-          Click Me
-        </button>
         <div className="canvas-bound">
           <Canvas>
+            <Text position={[0, 0, 0]} fontSize={1} color="black" anchorX="center" anchorY="middle">
+              111
+            </Text>
+            <TrackballControls />
             <MyCanvas
               origin={origin}
-              coordX={coordX}
-              coordY={coordY}
-              coordZ={coordZ}
+              coords={[coordX, coordY, coordZ, coordXRev, coordYRev, coordZRev]}
               inputVectors={vectors}
               colors={colors}
               animSpeed={animSpeed}
               matrix={matrix}
             ></MyCanvas>
-            {/* <Line points={[origin, coordX]} color="black"></Line>
-            <Line points={[origin, coordY]} color="black"></Line>
-            {vectors.map((vector, index) => (
-              <Line
-                key={index}
-                points={[
-                  origin,
-                  new THREE.Vector3(vector.x, vector.y, vector.z),
-                ]}
-                color={colors}
-                lineWidth={4}
-              />
-            ))}
-            {transVectors.map((vector, index) => (
-              <Line
-                key={index}
-                points={[
-                  origin,
-                  new THREE.Vector3(vector.x, vector.y, vector.z),
-                ]}
-                color={colors}
-                lineWidth={4}
-              />
-            ))} */}
           </Canvas>
         </div>
       </div>

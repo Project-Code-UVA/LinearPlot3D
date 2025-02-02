@@ -5,9 +5,9 @@
   text-align: center;
 }
 
-/* div {
+div {
   border: 1px solid black;
-} */
+}
 
 .logo {
   height: 6em;
@@ -46,16 +46,11 @@
   color: #888;
 }
 
-#hello {
-  font-size: 2em;
-  margin: 1em 0;
-}
-
 .canvas-bound {
   /* border-style: solid; */
   /* border-width: 1px; */
-  width: 400px;
-  height: 400px;
+  width: 50vw;
+  height: 100vh;
 }
 
 .side {
