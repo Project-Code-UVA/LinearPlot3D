@@ -87,3 +87,7 @@ button:focus-visible {
   height: 400px;
   overflow-y: scroll;
 }
+
+.matrix-input-box {
+  width: 100px;
+}

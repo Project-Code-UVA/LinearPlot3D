@@ -3,16 +3,17 @@ import * as THREE from "three";
 import MyCanvas from "./MyCanvas";
 import { useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { TrackballControls, Text } from '@react-three/drei'
-import ThreeDTextScene from "./playground";
-
+import {
+  OrbitControls,
+  PerspectiveCamera,
+} from "@react-three/drei";
 
 const origin = new THREE.Vector3(0, 0, 0);
 
 function App() {
   const [animSpeed, setAnimSpeed] = useState(1.0);
   const [vectors, setVectors] = useState([]);
-  const [matrix, setMatrix] = useState([1, 0, 0, 1]);
+  const [matrix, setMatrix] = useState([1, 0, 0, 0, 1, 0, 0, 0, 1]);
   const [colors, setColors] = useState("purple");
 
   const updateAnimSpeed = (e) => {
@@ -51,7 +52,7 @@ function App() {
     ]);
   };
 
-  const handleMatrixa21Change = (e) => {
+  const handleMatrixa13Change = (e) => {
     setMatrix([
       ...matrix.slice(0, 2),
       Number(e.target.value),
@@ -59,11 +60,50 @@ function App() {
     ]);
   };
 
-  const handleMatrixa22Change = (e) => {
+  const handleMatrixa21Change = (e) => {
     setMatrix([
       ...matrix.slice(0, 3),
       Number(e.target.value),
       ...matrix.slice(4),
+    ]);
+  };
+
+  const handleMatrixa22Change = (e) => {
+    setMatrix([
+      ...matrix.slice(0, 4),
+      Number(e.target.value),
+      ...matrix.slice(5),
+    ]);
+  };
+
+  const handleMatrixa23Change = (e) => {
+    setMatrix([
+      ...matrix.slice(0, 5),
+      Number(e.target.value),
+      ...matrix.slice(6),
+    ]);
+  };
+  const handleMatrixa31Change = (e) => {
+    setMatrix([
+      ...matrix.slice(0, 6),
+      Number(e.target.value),
+      ...matrix.slice(7),
+    ]);
+  };
+
+  const handleMatrixa32Change = (e) => {
+    setMatrix([
+      ...matrix.slice(0, 7),
+      Number(e.target.value),
+      ...matrix.slice(8),
+    ]);
+  };
+
+  const handleMatrixa33Change = (e) => {
+    setMatrix([
+      ...matrix.slice(0, 9),
+      Number(e.target.value),
+      ...matrix.slice(9),
     ]);
   };
 
@@ -87,12 +127,55 @@ function App() {
           <div className="matrix-input">
             <div className="matrix-title">Matrix</div>
             <div className="matrix-row">
-              <input placeholder="1" onChange={handleMatrixa11Change}></input>
-              <input placeholder="0" onChange={handleMatrixa12Change}></input>
+              <input
+                placeholder="1"
+                onChange={handleMatrixa11Change}
+                className="matrix-input-box"
+              ></input>
+              <input
+                placeholder="0"
+                onChange={handleMatrixa12Change}
+                className="matrix-input-box"
+              ></input>
+              <input
+                placeholder="0"
+                onChange={handleMatrixa13Change}
+                className="matrix-input-box"
+              ></input>
             </div>
             <div className="matrix-row">
-              <input placeholder="0" onChange={handleMatrixa21Change}></input>
-              <input placeholder="1" onChange={handleMatrixa22Change}></input>
+              <input
+                placeholder="0"
+                onChange={handleMatrixa21Change}
+                className="matrix-input-box"
+              ></input>
+              <input
+                placeholder="1"
+                onChange={handleMatrixa22Change}
+                className="matrix-input-box"
+              ></input>
+              <input
+                placeholder="0"
+                onChange={handleMatrixa23Change}
+                className="matrix-input-box"
+              ></input>
+            </div>
+            <div className="matrix-row">
+              <input
+                placeholder="0"
+                onChange={handleMatrixa31Change}
+                className="matrix-input-box"
+              ></input>
+              <input
+                placeholder="0"
+                onChange={handleMatrixa32Change}
+                className="matrix-input-box"
+              ></input>
+              <input
+                placeholder="1"
+                onChange={handleMatrixa33Change}
+                className="matrix-input-box"
+              ></input>
             </div>
           </div>
           <div className="vector-input">
@@ -102,10 +185,14 @@ function App() {
                 <input
                   placeholder="x-value"
                   onChange={(e) => {
+                    let val = e.target.value;
+                    if (isNaN(parseFloat(val))) {
+                      val = 0;
+                    }
                     let newVectors = [
                       ...vectors.slice(0, index),
                       {
-                        x: e.target.value,
+                        x: val,
                         y: vectors[index].y,
                         z: vectors[index].z,
                       },
@@ -118,12 +205,36 @@ function App() {
                 <input
                   placeholder="y-value"
                   onChange={(e) => {
+                    let val = e.target.value;
+                    if (isNaN(parseFloat(val))) {
+                      val = 0;
+                    }
                     let newVectors = [
                       ...vectors.slice(0, index),
                       {
                         x: vectors[index].x,
-                        y: e.target.value,
+                        y: val,
                         z: vectors[index].z,
+                      },
+                      ...vectors.slice(index + 1),
+                    ];
+                    setVectors(newVectors);
+                  }}
+                ></input>
+                <div>z</div>
+                <input
+                  placeholder="z-value"
+                  onChange={(e) => {
+                    let val = e.target.value;
+                    if (isNaN(parseFloat(val))) {
+                      val = 0;
+                    }
+                    let newVectors = [
+                      ...vectors.slice(0, index),
+                      {
+                        x: vectors[index].x,
+                        y: vectors[index].y,
+                        z: val,
                       },
                       ...vectors.slice(index + 1),
                     ];
@@ -155,10 +266,17 @@ function App() {
         </div>
         <div className="canvas-bound">
           <Canvas>
-            <Text position={[0, 0, 0]} fontSize={1} color="black" anchorX="center" anchorY="middle">
-              111
-            </Text>
-            <TrackballControls />
+            <OrbitControls
+              enableZoom={true}
+              enablePan={true}
+              enableRotate={true}
+            />
+            <PerspectiveCamera
+              makeDefault
+              position={[10, 10, 10]}
+              fov={60}
+              zoom={0.9}
+            />
             <MyCanvas
               origin={origin}
               coords={[coordX, coordY, coordZ, coordXRev, coordYRev, coordZRev]}

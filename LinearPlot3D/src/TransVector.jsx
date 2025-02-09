@@ -31,14 +31,24 @@ export default class Vector {
   }
 
   #updateTranslatedVec() {
-    this.#transX = this.#origX * this.#matrix[0] + this.#origY * this.#matrix[1];
-    this.#transY = this.#origX * this.#matrix[2] + this.#origY * this.#matrix[3];
+    this.#transX = this.#origX * this.#matrix[0] + this.#origY * this.#matrix[1] + this.#origZ * this.#matrix[2];
+    this.#transY = this.#origX * this.#matrix[3] + this.#origY * this.#matrix[4] + this.#origZ * this.#matrix[5];
+    this.#transZ = this.#origX * this.#matrix[6] + this.#origY * this.#matrix[7] + this.#origZ * this.#matrix[8];
   }
 
   #updateCurrentVec() {
+    this.#applyLinearTransform();
+    // this.#applyRotationalTransform();
+  }
+
+  #applyLinearTransform() {
     this.#currX = this.#origX + this.#animTime*(this.#transX - this.#origX);
     this.#currY = this.#origY + this.#animTime*(this.#transY - this.#origY);
-    // this.#currZ = this.origZ + this.animTime*(this.transZ - this.origZ);
+    this.#currZ = this.#origZ + this.#animTime*(this.#transZ - this.#origZ);
+  }
+
+  #applyRotationalTransform() {
+    
   }
 
   // Time can be any decimal value but it will be truncated
