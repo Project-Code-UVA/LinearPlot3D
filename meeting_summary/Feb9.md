@@ -21,3 +21,4 @@ Lists of tasks to be completed:
 5. Add any additional elements that you think will be useful for the project!
 6. Allow vectors to start from any point on the canvas
 7. Add meta data like title description in index.html
+8. Make the animation smoother rotationally
