@@ -122,8 +122,9 @@ function App() {
               <input placeholder="1.0" onChange={updateAnimSpeed}></input>
             </div>
           </div>
+          <hr className="divider-h"></hr>
           <div className="matrix-input">
-            <div className="matrix-title">Matrix</div>
+            <div className="matrix-title">Transformation Matrix</div>
             <div className="matrix-row">
               <input
                 placeholder="1"
@@ -176,10 +177,10 @@ function App() {
               ></input>
             </div>
           </div>
+          <hr className="divider-h"></hr>
           <div className="vector-input">
             {vectors.map((vector, index) => (
               <div key={index} className="input-box">
-                <div>x</div>
                 <input
                   placeholder="x-value"
                   onChange={(e) => {
@@ -199,7 +200,6 @@ function App() {
                     setVectors(newVectors);
                   }}
                 ></input>
-                <div>y</div>
                 <input
                   placeholder="y-value"
                   onChange={(e) => {
@@ -219,7 +219,6 @@ function App() {
                     setVectors(newVectors);
                   }}
                 ></input>
-                <div>z</div>
                 <input
                   placeholder="z-value"
                   onChange={(e) => {
@@ -239,7 +238,7 @@ function App() {
                     setVectors(newVectors);
                   }}
                 ></input>
-                <div>color</div>
+                
               </div>
             ))}
           </div>

@@ -17,6 +17,7 @@
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -25,6 +26,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -59,7 +61,7 @@
   display: flex;
   justify-items: left;
   flex-direction: column;
-  background-color: #16aefa;
+  background-color: #5ac8ff;
 }
 
 .navbar {
@@ -84,6 +86,26 @@
   align-items: center;
   overflow-x: scroll;
   width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  overflow-y: hidden;
+}
+
+/* .matrix-input {
+  border-radius: 10px;
+  padding: 10px;
+  display: inline-block;
+  width: 400px;
+  overflow-y: scroll;
+} */
+
+.divider-h {
+  width: 90%;
+  align-self: center;
+  height: 2px;
+  background-color: #333;
+  border: none;
+  margin: 10px 0;
 }
 
 ::-webkit-scrollbar {
@@ -114,6 +136,24 @@ input:focus {
 input::placeholder {
   color: #999;
   font-style: italic;
+}
+
+.vector-button {
+  cursor: pointer;
+}
+
+.vector-input {
+  border-radius: 10px;
+  padding: 10px;
+  display: inline-block;
+  width: 400px;
+  overflow-y: scroll;
+}
+
+
+
+.matrix-input-box {
+  width: 100px;
 }
 
 input:disabled {

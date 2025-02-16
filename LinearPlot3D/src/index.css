@@ -29,6 +29,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  overflow-y: hidden
 }
 
 h1 {
@@ -70,20 +71,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
-
-.vector-button {
-  cursor: pointer;
-}
-
-.vector-input{
-  border-radius: 10px;
-  padding: 10px;
-  display: inline-block;
-  width: 400px;
-  overflow-y: scroll;
-}
-
-.matrix-input-box {
-  width: 100px;
 }
