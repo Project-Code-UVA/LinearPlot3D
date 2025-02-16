@@ -273,7 +273,7 @@ function App() {
               makeDefault
               position={[10, 10, 10]}
               fov={60}
-              zoom={0.9}
+              zoom={1.3}
             />
             <MyCanvas
               origin={origin}
