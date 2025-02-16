@@ -3,10 +3,7 @@ import * as THREE from "three";
 import MyCanvas from "./MyCanvas";
 import { useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import {
-  OrbitControls,
-  PerspectiveCamera,
-} from "@react-three/drei";
+import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 
 const origin = new THREE.Vector3(0, 0, 0);
 
@@ -116,6 +113,7 @@ function App() {
 
   return (
     <>
+      <nav className="navbar">LinearPlot3D</nav>
       <div className="app">
         <div className="side">
           <div className="animation-speed-input">
