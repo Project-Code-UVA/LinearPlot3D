@@ -1,4 +1,5 @@
 
+import * as THREE from "three";
 
 // Takes in input values for the vector position
 // and uses them to calculate what the transformed position 
@@ -8,47 +9,51 @@
 // accessable via the getter functions. These can be accessed
 // just using "vector.x", though the result cannot be changed
 export default class Vector {
-  #origX;
-  #origY;
-  #origZ;
+  #orig
+  #trans
+  #curr
   #matrix;
-  #transX;
-  #transY;
-  #transZ;
-  #currX;
-  #currY;
-  #currZ;
   #animTime;
   
   // Read updateTime note about what "time" exactly refers to
   constructor(x, y, z, matrix, time = 0) {
-    this.#origX = parseFloat(x);
-    this.#origY = parseFloat(y);
-    this.#origZ = parseFloat(z);
-    this.#matrix = matrix;
+    this.#orig = new THREE.Vector3(parseFloat(x), parseFloat(y), parseFloat(z));
+    this.#matrix = new THREE.Matrix3(matrix[0], matrix[1], matrix[2], matrix[3], matrix[4], matrix[5], matrix[6], matrix[7], matrix[8]);
     this.#updateTranslatedVec();
     this.#updateTime(time);
   }
 
   #updateTranslatedVec() {
-    this.#transX = this.#origX * this.#matrix[0] + this.#origY * this.#matrix[1] + this.#origZ * this.#matrix[2];
-    this.#transY = this.#origX * this.#matrix[3] + this.#origY * this.#matrix[4] + this.#origZ * this.#matrix[5];
-    this.#transZ = this.#origX * this.#matrix[6] + this.#origY * this.#matrix[7] + this.#origZ * this.#matrix[8];
+    this.#trans = this.#orig.clone();
+    this.#trans.applyMatrix3(this.#matrix);
   }
 
   #updateCurrentVec() {
-    this.#applyLinearTransform();
-    // this.#applyRotationalTransform();
+    // this.#applyLinearTransform();
+    this.#applyRotationalTransform();
   }
 
   #applyLinearTransform() {
-    this.#currX = this.#origX + this.#animTime*(this.#transX - this.#origX);
-    this.#currY = this.#origY + this.#animTime*(this.#transY - this.#origY);
-    this.#currZ = this.#origZ + this.#animTime*(this.#transZ - this.#origZ);
+    this.#curr = this.#orig.clone();
+
+    let dif = new THREE.Vector3().subVectors(this.#trans, this.#orig);
+    this.#curr.addScaledVector(dif, this.#animTime);
   }
 
+  // Get spherical coordinates for the starting vector
+  // and the ending vector
   #applyRotationalTransform() {
-    
+    let sphstart = new THREE.Spherical().setFromVector3(this.#orig);
+    let sphend = new THREE.Spherical().setFromVector3(this.#trans);
+    let sphcurr = sphstart.clone();
+
+    let radiusdif = sphend.radius - sphstart.radius;
+    let phidif = sphend.phi - sphstart.phi;
+    let thetadif = sphend.theta - sphstart.theta;
+    sphcurr.phi = sphcurr.phi + this.#animTime*phidif;
+    sphcurr.theta = sphcurr.theta + this.#animTime*thetadif;
+    sphcurr.radius = sphcurr.radius + this.#animTime*radiusdif;
+    this.#curr = new THREE.Vector3().setFromSpherical(sphcurr);
   }
 
   // Time can be any decimal value but it will be truncated
@@ -59,15 +64,15 @@ export default class Vector {
     this.#updateCurrentVec();
   }
 
-  get x() { return this.#origX; }
-  get y() { return this.#origY; }
-  get z() { return this.#origZ; }
-  get transX() { return this.#transX; }
-  get transY() { return this.#transY; }
-  get transZ() { return this.#transZ; }
-  get currX() { return this.#currX; }
-  get currY() { return this.#currY; }
-  get currZ() { return this.#currZ; }
+  get x() { return this.#orig.x; }
+  get y() { return this.#orig.y; }
+  get z() { return this.#orig.z; }
+  get transX() { return this.#trans.x; }
+  get transY() { return this.#trans.y; }
+  get transZ() { return this.#trans.z; }
+  get currX() { return this.#curr.x; }
+  get currY() { return this.#curr.y; }
+  get currZ() { return this.#curr.z; }
   get animTime() { return this.#animTime; }
 
 }
