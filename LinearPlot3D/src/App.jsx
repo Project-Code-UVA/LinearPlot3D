@@ -4,6 +4,7 @@ import MyCanvas from "./MyCanvas";
 import { useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
+import { Trash2 } from "lucide-react";
 
 const origin = new THREE.Vector3(0, 0, 0);
 
@@ -238,7 +239,8 @@ function App() {
                     setVectors(newVectors);
                   }}
                 ></input>
-                
+                <button className="delete-vector-button">delete</button>
+                <div className="temp-fix"></div>
               </div>
             ))}
           </div>

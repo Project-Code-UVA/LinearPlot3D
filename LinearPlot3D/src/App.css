@@ -62,6 +62,8 @@
   justify-items: left;
   flex-direction: column;
   background-color: #5ac8ff;
+  overflow-y: scroll;
+  max-height: screen;
 }
 
 .navbar {
@@ -78,6 +80,7 @@
   width: 100vw;
   background-color: #d9effa;
   justify-items: left;
+  height: 100vh;
 }
 
 .input-box {
@@ -147,10 +150,25 @@ input::placeholder {
   padding: 10px;
   display: inline-block;
   width: 400px;
-  overflow-y: scroll;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
+.lc-icon {
+  width: 20px;
+  height: 20px;
+  color: #333;
+  display: inline-block;
+}
 
+.delete-vector-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
 
 .matrix-input-box {
   width: 100px;
@@ -159,4 +177,8 @@ input::placeholder {
 input:disabled {
   background-color: #f0f0f0;
   cursor: not-allowed;
+}
+
+.temp-fix {
+  padding-right: 30px;
 }
