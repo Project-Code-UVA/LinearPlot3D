@@ -78,6 +78,25 @@
   justify-items: left;
 }
 
+.input-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow-x: scroll;
+  width: 100%;
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  height: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .5);
+  box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
 input {
   padding: 4px 8px;
   margin: 2px 2px;
@@ -101,4 +120,3 @@ input:disabled {
   background-color: #f0f0f0;
   cursor: not-allowed;
 }
-

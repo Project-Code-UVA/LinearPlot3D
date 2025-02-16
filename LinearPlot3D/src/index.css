@@ -81,7 +81,6 @@ button:focus-visible {
   padding: 10px;
   display: inline-block;
   width: 400px;
-  height: 400px;
   overflow-y: scroll;
 }
 
