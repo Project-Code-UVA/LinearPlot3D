@@ -64,6 +64,8 @@
   background-color: #5ac8ff;
   overflow-y: scroll;
   max-height: screen;
+  width: 500px;
+  overflow-x: hidden;
 }
 
 .navbar {
@@ -180,5 +182,5 @@ input:disabled {
 }
 
 .temp-fix {
-  padding-right: 30px;
+  padding-right: 50px;
 }
