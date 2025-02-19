@@ -1,9 +1,37 @@
 import "./App.css";
 import { Billboard, Line, Text } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import * as THREE from "three";
 import TransVector from "./TransVector.jsx";
+
+function ArrowHelper({ vector, color }) {
+  const vectorArrow = useRef();
+
+  if (!vectorArrow.current) {
+    const start = new THREE.Vector3(0, 0, 0);
+    const end = new THREE.Vector3(vector.currX, vector.currZ, vector.currY);
+    const direction = new THREE.Vector3().subVectors(end, start).normalize();
+    const length = start.distanceTo(end);
+
+    vectorArrow.current = new THREE.ArrowHelper(direction, start, length, color);
+  }
+
+  useFrame(() => {
+    if (vectorArrow.current) {
+      const start = new THREE.Vector3(0, 0, 0);
+      const end = new THREE.Vector3(vector.currX, vector.currZ, vector.currY);
+      const direction = new THREE.Vector3().subVectors(end, start).normalize();
+      const length = start.distanceTo(end);
+
+      vectorArrow.current.setDirection(direction);
+      vectorArrow.current.setLength(length);
+      vectorArrow.current.setColor(color);
+    }
+  });
+
+  return <primitive object={vectorArrow.current} />;
+}
 
 export default function MyCanvas({
   origin,
@@ -42,9 +70,11 @@ export default function MyCanvas({
           Z
         </Text>
       </Billboard>
+
       {coords.map((coord, index) => (
         <Line key={index} points={[origin, coord]} color="black"></Line>
       ))}
+
       {vectors.map((vector, index) => (
         <Line
           key={index}
@@ -55,6 +85,10 @@ export default function MyCanvas({
           color={colors}
           lineWidth={4}
         />
+      ))}
+
+      {vectors.map((vector, index) => (
+        <ArrowHelper key={index} vector={vector} color={colors} />
       ))}
     </>
   );
