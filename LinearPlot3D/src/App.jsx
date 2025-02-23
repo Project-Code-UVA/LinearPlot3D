@@ -4,7 +4,7 @@ import MyCanvas from "./MyCanvas";
 import { useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
-import { Trash2 } from "lucide-react";
+import { v4 as uuidv4 } from "uuid";
 
 const origin = new THREE.Vector3(0, 0, 0);
 
@@ -19,7 +19,7 @@ function App() {
   };
 
   const handleAddVector = () => {
-    setVectors([...vectors, { x: 0, y: 0, z: 0 }]);
+    setVectors([...vectors, { x: 0, y: 0, z: 0, id: uuidv4() }]);
   };
 
   const handleDeleteVector = () => {
@@ -181,7 +181,7 @@ function App() {
           <hr className="divider-h"></hr>
           <div className="vector-input">
             {vectors.map((vector, index) => (
-              <div key={index} className="input-box">
+              <div key={vector.id} className="input-box">
                 <input
                   placeholder="x-value"
                   onChange={(e) => {
@@ -195,6 +195,7 @@ function App() {
                         x: val,
                         y: vectors[index].y,
                         z: vectors[index].z,
+                        id: vectors[index].id,
                       },
                       ...vectors.slice(index + 1),
                     ];
@@ -214,6 +215,7 @@ function App() {
                         x: vectors[index].x,
                         y: val,
                         z: vectors[index].z,
+                        id: vectors[index].id,
                       },
                       ...vectors.slice(index + 1),
                     ];
@@ -233,13 +235,21 @@ function App() {
                         x: vectors[index].x,
                         y: vectors[index].y,
                         z: val,
+                        id: vectors[index].id,
                       },
                       ...vectors.slice(index + 1),
                     ];
                     setVectors(newVectors);
                   }}
                 ></input>
-                <button className="delete-vector-button">delete</button>
+                <button
+                  className="delete-vector-button"
+                  onClick={() => {
+                    setVectors(vectors.filter((_, i) => i !== index));
+                  }}
+                >
+                  delete
+                </button>
                 <div className="temp-fix"></div>
               </div>
             ))}
