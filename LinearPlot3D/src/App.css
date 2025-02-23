@@ -62,10 +62,9 @@
   justify-items: left;
   flex-direction: column;
   background-color: #5ac8ff;
-  overflow-y: scroll;
+  overflow-y: auto;
   max-height: screen;
-  width: 520px;
-  overflow-x: hidden;
+  width: 600px;
 }
 
 .navbar {
@@ -116,6 +115,7 @@
 ::-webkit-scrollbar {
   -webkit-appearance: none;
   height: 7px;
+  width: 7px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -152,7 +152,7 @@ input::placeholder {
   padding: 10px;
   display: inline-block;
   width: 400px;
-  overflow-y: hidden;
+  overflow-y: scroll;
   overflow-x: hidden;
 }
 
@@ -181,6 +181,48 @@ input:disabled {
   cursor: not-allowed;
 }
 
-.temp-fix {
-  padding-right: 50px;
+.app-name {
+  padding: 0px;
+  margin: 0px;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 12px 16px;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  background-color: white;
+  color: #333;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+  transition: 0.3s;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+select:focus {
+  border-color: #2980b9;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+.custom-select::after {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #3498db;
+  font-size: 14px;
+}
+
+select:hover {
+  border-color: #2980b9;
+}
+
+.color-label {
+  align-self: center;
+  /* margin-left: 10px; */
 }

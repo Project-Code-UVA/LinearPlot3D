@@ -14,8 +14,8 @@ function App() {
   const [matrix, setMatrix] = useState([1, 0, 0, 0, 1, 0, 0, 0, 1]);
   const [colors, setColors] = useState("purple");
 
-  const [showAnimation, setShowAnimation] = useState(false);
-  const [showVectorLabels, setShowVectorLabels] = useState(false);
+  const [showAnimation, setShowAnimation] = useState(true);
+  const [showVectorLabels, setShowVectorLabels] = useState(true);
 
   const updateAnimSpeed = (e) => {
     setAnimSpeed(e.target.value);
@@ -117,9 +117,13 @@ function App() {
 
   return (
     <>
-      <nav className="navbar">LinearPlot3D</nav>
+      {/* <nav className="navbar">LinearPlot3D</nav> */}
       <div className="app">
         <div className="side">
+          <nav>
+            <h1 className="app-name">LinearPlot3D</h1>
+          </nav>
+          <hr className="divider-h"></hr>
           <div className="animation-speed-input">
             <div className="anim-speed-title">
               Animation Speed
@@ -266,7 +270,6 @@ function App() {
           <button className="vector-button" onClick={handleDeleteAllVectors}>
             Delete all vectors
           </button>
-          <input placeholder="color" onChange={handleColorChange}></input>
           <button
             className="vector-button"
             onClick={() => {
@@ -284,15 +287,18 @@ function App() {
             {showVectorLabels ? "Hide Vector Labels" : "Show Vector Labels"}
           </button>
           <hr className="divider-h"></hr>
-
-          <button
-            onClick={() => {
-              console.log(vectors);
-              console.log(matrix);
-            }}
+          <label className="color-label">Color</label>
+          <select
+            className="color-select"
+            onChange={handleColorChange}
+            defaultValue="purple"
           >
-            Debug Button
-          </button>
+            <option value="purple">Purple</option>
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="green">Green</option>
+            <option value="yellow">Yellow</option>
+          </select>
         </div>
         <div className="canvas-bound">
           <Canvas>
