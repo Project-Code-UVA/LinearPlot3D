@@ -14,7 +14,12 @@ function ArrowHelper({ vector, color }) {
     const direction = new THREE.Vector3().subVectors(end, start).normalize();
     const length = start.distanceTo(end);
 
-    vectorArrow.current = new THREE.ArrowHelper(direction, start, length, color);
+    vectorArrow.current = new THREE.ArrowHelper(
+      direction,
+      start,
+      length,
+      color
+    );
   }
 
   useFrame(() => {
@@ -76,15 +81,38 @@ export default function MyCanvas({
       ))}
 
       {vectors.map((vector, index) => (
-        <Line
-          key={index}
-          points={[
-            origin,
-            new THREE.Vector3(vector.currX, vector.currZ, vector.currY),
-          ]}
-          color={colors}
-          lineWidth={4}
-        />
+        <>
+          <Line
+            key={index}
+            points={[
+              origin,
+              new THREE.Vector3(vector.currX, vector.currZ, vector.currY),
+            ]}
+            color={colors}
+            lineWidth={4}
+          />
+          <Billboard
+            key={index}
+            position={[
+              vector.currX + 0.1,
+              vector.currZ + 0.1,
+              vector.currY + 0.1,
+            ]}
+          >
+            <Text
+              fontSize={0.2}
+              color="black"
+              anchorX="center"
+              anchorY="middle"
+            >
+              {`
+              (${vector.currX.toFixed(2)},${vector.currY.toFixed(
+                2
+              )},${vector.currZ.toFixed(2)})
+              `}
+            </Text>
+          </Billboard>
+        </>
       ))}
 
       {vectors.map((vector, index) => (
