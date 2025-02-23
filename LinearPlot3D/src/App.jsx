@@ -14,6 +14,9 @@ function App() {
   const [matrix, setMatrix] = useState([1, 0, 0, 0, 1, 0, 0, 0, 1]);
   const [colors, setColors] = useState("purple");
 
+  const [showAnimation, setShowAnimation] = useState(false);
+  const [showVectorLabels, setShowVectorLabels] = useState(false);
+
   const updateAnimSpeed = (e) => {
     setAnimSpeed(e.target.value);
   };
@@ -265,6 +268,24 @@ function App() {
           </button>
           <input placeholder="color" onChange={handleColorChange}></input>
           <button
+            className="vector-button"
+            onClick={() => {
+              setShowAnimation(!showAnimation);
+            }}
+          >
+            {showAnimation ? "Stop Animation" : "Start Animation"}
+          </button>
+          <button
+            className="vector-button"
+            onClick={() => {
+              setShowVectorLabels(!showVectorLabels);
+            }}
+          >
+            {showVectorLabels ? "Hide Vector Labels" : "Show Vector Labels"}
+          </button>
+          <hr className="divider-h"></hr>
+
+          <button
             onClick={() => {
               console.log(vectors);
               console.log(matrix);
@@ -293,6 +314,8 @@ function App() {
               colors={colors}
               animSpeed={animSpeed}
               matrix={matrix}
+              showAnimation={showAnimation}
+              showVectorLabels={showVectorLabels}
             ></MyCanvas>
           </Canvas>
         </div>

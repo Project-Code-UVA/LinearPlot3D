@@ -45,11 +45,15 @@ export default function MyCanvas({
   colors,
   animSpeed,
   matrix,
+  showVectorLabels,
+  showAnimation,
 }) {
   const [t, setT] = useState(0);
 
   useFrame(() => {
-    setT(t + 0.01 * animSpeed);
+    if (showAnimation) {
+      setT(t + 0.01 * animSpeed);
+    }
   });
 
   let vectors = [];
@@ -91,27 +95,29 @@ export default function MyCanvas({
             color={colors}
             lineWidth={4}
           />
-          <Billboard
-            key={index}
-            position={[
-              vector.currX + 0.1,
-              vector.currZ + 0.1,
-              vector.currY + 0.1,
-            ]}
-          >
-            <Text
-              fontSize={0.2}
-              color="black"
-              anchorX="center"
-              anchorY="middle"
+          {showVectorLabels && (
+            <Billboard
+              key={index}
+              position={[
+                vector.currX + 0.1,
+                vector.currZ + 0.1,
+                vector.currY + 0.1,
+              ]}
             >
-              {`
+              <Text
+                fontSize={0.2}
+                color="black"
+                anchorX="center"
+                anchorY="middle"
+              >
+                {`
               (${vector.currX.toFixed(2)},${vector.currY.toFixed(
-                2
-              )},${vector.currZ.toFixed(2)})
+                  2
+                )},${vector.currZ.toFixed(2)})
               `}
-            </Text>
-          </Billboard>
+              </Text>
+            </Billboard>
+          )}
         </>
       ))}
 
