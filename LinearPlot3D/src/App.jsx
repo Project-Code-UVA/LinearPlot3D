@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { v4 as uuidv4 } from "uuid";
+import { Github } from "lucide-react";
 
 const origin = new THREE.Vector3(0, 0, 0);
 
@@ -301,6 +302,14 @@ function App() {
           </select>
         </div>
         <div className="canvas-bound">
+          <img
+            src="/gh.png"
+            alt="github"
+            className="github"
+            onClick={() => {
+              window.open("https://github.com/Project-Code-UVA/LinearPlot3D");
+            }}
+          ></img>
           <Canvas>
             <OrbitControls
               enableZoom={true}
