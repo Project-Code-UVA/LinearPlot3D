@@ -103,7 +103,7 @@ function App() {
 
   const handleMatrixa33Change = (e) => {
     setMatrix([
-      ...matrix.slice(0, 9),
+      ...matrix.slice(0, 8),
       Number(e.target.value),
       ...matrix.slice(9),
     ]);
